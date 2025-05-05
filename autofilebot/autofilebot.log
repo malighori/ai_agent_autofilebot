@@ -1,0 +1,34 @@
+2025-05-05 14:33:43 | INFO | [INFO] Watchdog started. Monitoring directories: files/, error/, backup/
+2025-05-05 14:33:55 | INFO | [WATCHDOG] File created: backup/file1.tx
+2025-05-05 14:33:55 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:33:55 | INFO | [WATCHDOG] File created: backup/file2.tx
+2025-05-05 14:33:55 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:33:55 | INFO | [WATCHDOG] File created: backup/file3.tx
+2025-05-05 14:33:55 | INFO | [RUNNING] backup/ exceeded threshold (2). Moving files to hadoop/
+2025-05-05 14:33:55 | INFO | Moved 'file1.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:33:55 | INFO | Moved 'file2.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:33:55 | INFO | Moved 'file3.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:33:55 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:36:47 | INFO | [INFO] Watchdog stopped by user (KeyboardInterrupt)
+2025-05-05 14:36:58 | INFO | [INFO] Watchdog started. Monitoring directories: files/, error/, backup/
+2025-05-05 14:37:10 | INFO | [WATCHDOG] File created: error/file1.tx
+2025-05-05 14:37:10 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:37:10 | INFO | [WATCHDOG] File created: error/file3.tx
+2025-05-05 14:37:10 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:37:10 | INFO | [WATCHDOG] File created: error/file2.tx
+2025-05-05 14:37:10 | INFO | [RUNNING] error/ exceeded threshold (2). Moving files to backup/
+2025-05-05 14:37:10 | INFO | Moved 'file1.tx' from 'error/' to 'backup/'
+2025-05-05 14:37:10 | INFO | Moved 'file2.tx' from 'error/' to 'backup/'
+2025-05-05 14:37:10 | INFO | Moved 'file3.tx' from 'error/' to 'backup/'
+2025-05-05 14:37:10 | INFO | [RUNNING] backup/ exceeded threshold (2). Moving files to hadoop/
+2025-05-05 14:37:10 | INFO | Moved 'file1.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:37:10 | INFO | Moved 'file2.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:37:10 | INFO | Moved 'file3.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:37:10 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:37:10 | INFO | [WATCHDOG] File created: backup/file1.tx
+2025-05-05 14:37:10 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:37:10 | INFO | [WATCHDOG] File created: backup/file2.tx
+2025-05-05 14:37:10 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:37:10 | INFO | [WATCHDOG] File created: backup/file3.tx
+2025-05-05 14:37:10 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:37:41 | INFO | [INFO] Watchdog stopped by user (KeyboardInterrupt)

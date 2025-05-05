@@ -1,7 +1,11 @@
 import os
 import shutil
-import time
 import hashlib
+import time
+import logging
+from datetime import datetime
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
 # Directories
 DIRS = {
@@ -17,6 +21,23 @@ STATUS = {
     1: "RUNNING",
     2: "SUCCESS"
 }
+
+# Logging setup
+LOG_FILE = "autofilebot.log"
+logging.basicConfig(
+    filename=LOG_FILE,
+    level=logging.INFO,
+    format='%(asctime)s | %(levelname)s | %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+def log_event(message, level="info"):
+    if level == "error":
+        logging.error(message)
+    elif level == "warning":
+        logging.warning(message)
+    else:
+        logging.info(message)
 
 def get_file_hash(filepath):
     with open(filepath, 'rb') as f:
@@ -37,46 +58,85 @@ def detect_duplicates(directory):
 
 def move_files(src, dst):
     for fname in os.listdir(src):
-        shutil.move(os.path.join(src, fname), os.path.join(dst, fname))
+        src_path = os.path.join(src, fname)
+        dst_path = os.path.join(dst, fname)
+        try:
+            shutil.move(src_path, dst_path)
+            log_event(f"Moved '{fname}' from '{src}' to '{dst}'")
+        except Exception as e:
+            log_event(f"Failed to move '{fname}' from '{src}' to '{dst}': {e}", level="error")
 
 def process_directory(path, next_path, threshold):
     files = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
-    
     if len(files) > threshold:
-        print(f"[{STATUS[1]}] {path} exceeded threshold. Moving files to {next_path}")
+        msg = f"[{STATUS[1]}] {path} exceeded threshold ({threshold}). Moving files to {next_path}"
+        print(msg)
+        log_event(msg)
         move_files(path, next_path)
         return True
     return False
 
 def agent_runner():
     try:
-        # Handle Duplicates
+        # Handle Duplicates in 'files'
         duplicates = detect_duplicates(DIRS["files"])
         for dup in duplicates:
-            print(f"[{STATUS[0]}] Duplicate detected: {dup}")
+            msg = f"[{STATUS[0]}] Duplicate detected: {dup}"
+            print(msg)
+            log_event(msg, level="warning")
             shutil.move(dup, os.path.join(DIRS["error"], os.path.basename(dup)))
+            log_event(f"Moved duplicate '{os.path.basename(dup)}' to 'error/'")
 
-        # Stage 1: Files → Error
+        signal = 2  # Default to success
+
+        # Step-by-step: if any stage has overflow, move forward
         if process_directory(DIRS["files"], DIRS["error"], 2):
             signal = 1
-        else:
-            signal = 2
-
-        # Stage 2: Error → Backup
         if process_directory(DIRS["error"], DIRS["backup"], 2):
             signal = 1
-
-        # Stage 3: Backup → Hadoop
         if process_directory(DIRS["backup"], DIRS["hadoop"], 2):
             signal = 2
 
-        print(f"[SEMAPHORE SIGNAL] {signal} = {STATUS[signal]}")
+        signal_msg = f"[SEMAPHORE SIGNAL] {signal} = {STATUS[signal]}"
+        print(signal_msg)
+        log_event(signal_msg)
 
     except Exception as e:
-        print(f"[{STATUS[0]}] Unexpected error: {str(e)}")
+        err_msg = f"[{STATUS[0]}] Unexpected error: {str(e)}"
+        print(err_msg)
+        log_event(err_msg, level="error")
 
-# Run the agent
-# agent_runner()
-while True:
-    agent_runner()
-    time.sleep(10) 
+# Watchdog Event Handler
+class FileEventHandler(FileSystemEventHandler):
+    def on_modified(self, event):
+        if event.is_directory:
+            return
+        log_event(f"[WATCHDOG] File modified: {event.src_path}")
+        agent_runner()
+
+    def on_created(self, event):
+        if event.is_directory:
+            return
+        log_event(f"[WATCHDOG] File created: {event.src_path}")
+        agent_runner()
+
+# Start Watchdog for multiple directories
+if __name__ == "__main__":
+    observer = Observer()
+    event_handler = FileEventHandler()
+
+    for d in ["files", "error", "backup"]:
+        full_path = DIRS[d]
+        observer.schedule(event_handler, path=full_path, recursive=False)
+
+    observer.start()
+    print("[INFO] Watching for changes in files/, error/, and backup/ ...")
+    log_event("[INFO] Watchdog started. Monitoring directories: files/, error/, backup/")
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+        log_event("[INFO] Watchdog stopped by user (KeyboardInterrupt)")
+    observer.join()
