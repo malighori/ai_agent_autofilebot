@@ -32,3 +32,117 @@
 2025-05-05 14:37:10 | INFO | [WATCHDOG] File created: backup/file3.tx
 2025-05-05 14:37:10 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
 2025-05-05 14:37:41 | INFO | [INFO] Watchdog stopped by user (KeyboardInterrupt)
+2025-05-05 14:40:16 | INFO | [INFO] Watchdog started. Monitoring directories: files/, error/, backup/
+2025-05-05 14:40:36 | INFO | [WATCHDOG] File created: files/.csv
+2025-05-05 14:40:36 | INFO | [RUNNING] backup/ exceeded threshold (2). Moving files to hadoop/
+2025-05-05 14:40:36 | INFO | Moved 'file1.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:40:36 | INFO | Moved 'file2.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:40:36 | INFO | Moved 'file3.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:40:36 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:40:56 | INFO | [WATCHDOG] File created: backup/.csv
+2025-05-05 14:40:56 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:40:56 | INFO | [WATCHDOG] File created: backup/file1.tx
+2025-05-05 14:40:56 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:40:56 | INFO | [WATCHDOG] File created: backup/file2.tx
+2025-05-05 14:40:56 | INFO | [RUNNING] backup/ exceeded threshold (2). Moving files to hadoop/
+2025-05-05 14:40:56 | INFO | Moved '.csv' from 'backup/' to 'hadoop/'
+2025-05-05 14:40:56 | INFO | Moved 'file1.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:40:56 | INFO | Moved 'file2.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:40:56 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:40:56 | INFO | [WATCHDOG] File created: backup/file3.tx
+2025-05-05 14:40:56 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:07 | INFO | [WATCHDOG] File created: error/.csv
+2025-05-05 14:41:07 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:08 | INFO | [WATCHDOG] File created: error/file1.tx
+2025-05-05 14:41:08 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:08 | INFO | [WATCHDOG] File created: error/file2.tx
+2025-05-05 14:41:08 | INFO | [RUNNING] error/ exceeded threshold (2). Moving files to backup/
+2025-05-05 14:41:08 | INFO | Moved '.csv' from 'error/' to 'backup/'
+2025-05-05 14:41:08 | INFO | Moved 'file1.tx' from 'error/' to 'backup/'
+2025-05-05 14:41:08 | INFO | Moved 'file2.tx' from 'error/' to 'backup/'
+2025-05-05 14:41:08 | INFO | [RUNNING] backup/ exceeded threshold (2). Moving files to hadoop/
+2025-05-05 14:41:08 | INFO | Moved '.csv' from 'backup/' to 'hadoop/'
+2025-05-05 14:41:08 | INFO | Moved 'file1.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:41:08 | INFO | Moved 'file2.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:41:08 | INFO | Moved 'file3.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:41:08 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:08 | INFO | [WATCHDOG] File created: backup/.csv
+2025-05-05 14:41:08 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:08 | INFO | [WATCHDOG] File created: backup/file1.tx
+2025-05-05 14:41:08 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:08 | INFO | [WATCHDOG] File created: backup/file2.tx
+2025-05-05 14:41:08 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:19 | INFO | [WATCHDOG] File created: backup/.csv
+2025-05-05 14:41:19 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:19 | INFO | [WATCHDOG] File created: backup/file1.tx
+2025-05-05 14:41:19 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:19 | INFO | [WATCHDOG] File created: backup/file2.tx
+2025-05-05 14:41:19 | INFO | [RUNNING] backup/ exceeded threshold (2). Moving files to hadoop/
+2025-05-05 14:41:19 | INFO | Moved '.csv' from 'backup/' to 'hadoop/'
+2025-05-05 14:41:19 | INFO | Moved 'file1.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:41:19 | INFO | Moved 'file2.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:41:19 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:41:19 | INFO | [WATCHDOG] File created: backup/file3.tx
+2025-05-05 14:41:19 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:08 | INFO | [INFO] Watchdog stopped by user (KeyboardInterrupt)
+2025-05-05 14:47:11 | INFO | [INFO] Watchdog started. Monitoring directories: files/, error/, backup/
+2025-05-05 14:47:21 | INFO | [WATCHDOG] File created: backup/.csv
+2025-05-05 14:47:21 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:21 | INFO | [INFO] error/ has 0 file(s). No action taken.
+2025-05-05 14:47:21 | INFO | [RUNNING] backup/ has 2 files. Moving to hadoop/
+2025-05-05 14:47:21 | INFO | Moved '.csv' from 'backup/' to 'hadoop/'
+2025-05-05 14:47:21 | INFO | Moved 'file3.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:47:21 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:43 | INFO | [WATCHDOG] File created: error/.csv
+2025-05-05 14:47:43 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [RUNNING] error/ has 1 files. Moving to backup/
+2025-05-05 14:47:43 | INFO | Moved '.csv' from 'error/' to 'backup/'
+2025-05-05 14:47:43 | INFO | [RUNNING] backup/ has 1 files. Moving to hadoop/
+2025-05-05 14:47:43 | INFO | Moved '.csv' from 'backup/' to 'hadoop/'
+2025-05-05 14:47:43 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:43 | INFO | [WATCHDOG] File modified: error/.csv
+2025-05-05 14:47:43 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [INFO] error/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [INFO] backup/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:43 | INFO | [WATCHDOG] File created: backup/.csv
+2025-05-05 14:47:43 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [INFO] error/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [INFO] backup/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:43 | INFO | [WATCHDOG] File created: error/file1.tx
+2025-05-05 14:47:43 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [RUNNING] error/ has 1 files. Moving to backup/
+2025-05-05 14:47:43 | INFO | Moved 'file1.tx' from 'error/' to 'backup/'
+2025-05-05 14:47:43 | INFO | [RUNNING] backup/ has 1 files. Moving to hadoop/
+2025-05-05 14:47:43 | INFO | Moved 'file1.tx' from 'backup/' to 'hadoop/'
+2025-05-05 14:47:43 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:43 | INFO | [WATCHDOG] File created: backup/file1.tx
+2025-05-05 14:47:43 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [INFO] error/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [INFO] backup/ has 0 file(s). No action taken.
+2025-05-05 14:47:43 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:49 | INFO | [WATCHDOG] File created: files/.csv
+2025-05-05 14:47:49 | INFO | [RUNNING] files/ has 1 files. Moving to error/
+2025-05-05 14:47:49 | INFO | Moved '.csv' from 'files/' to 'error/'
+2025-05-05 14:47:49 | INFO | [RUNNING] error/ has 1 files. Moving to backup/
+2025-05-05 14:47:49 | INFO | Moved '.csv' from 'error/' to 'backup/'
+2025-05-05 14:47:49 | INFO | [RUNNING] backup/ has 1 files. Moving to hadoop/
+2025-05-05 14:47:49 | INFO | Moved '.csv' from 'backup/' to 'hadoop/'
+2025-05-05 14:47:49 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:49 | INFO | [WATCHDOG] File created: error/.csv
+2025-05-05 14:47:49 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [INFO] error/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [INFO] backup/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:49 | INFO | [WATCHDOG] File modified: error/.csv
+2025-05-05 14:47:49 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [INFO] error/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [INFO] backup/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:47:49 | INFO | [WATCHDOG] File created: backup/.csv
+2025-05-05 14:47:49 | INFO | [INFO] files/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [INFO] error/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [INFO] backup/ has 0 file(s). No action taken.
+2025-05-05 14:47:49 | INFO | [SEMAPHORE SIGNAL] 2 = SUCCESS
+2025-05-05 14:49:00 | INFO | [INFO] Watchdog stopped by user (KeyboardInterrupt)

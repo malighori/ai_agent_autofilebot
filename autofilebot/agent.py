@@ -66,18 +66,21 @@ def move_files(src, dst):
         except Exception as e:
             log_event(f"Failed to move '{fname}' from '{src}' to '{dst}': {e}", level="error")
 
-def process_directory(path, next_path, threshold):
+def process_directory(path, next_path, min_files=1):
     files = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
-    if len(files) > threshold:
-        msg = f"[{STATUS[1]}] {path} exceeded threshold ({threshold}). Moving files to {next_path}"
+    if len(files) >= min_files:
+        msg = f"[{STATUS[1]}] {path} has {len(files)} files. Moving to {next_path}"
         print(msg)
         log_event(msg)
         move_files(path, next_path)
         return True
+    else:
+        log_event(f"[INFO] {path} has {len(files)} file(s). No action taken.")
     return False
 
 def agent_runner():
     try:
+        
         # Handle Duplicates in 'files'
         duplicates = detect_duplicates(DIRS["files"])
         for dup in duplicates:
@@ -90,11 +93,11 @@ def agent_runner():
         signal = 2  # Default to success
 
         # Step-by-step: if any stage has overflow, move forward
-        if process_directory(DIRS["files"], DIRS["error"], 2):
+        if process_directory(DIRS["files"], DIRS["error"], 1):
             signal = 1
-        if process_directory(DIRS["error"], DIRS["backup"], 2):
+        if process_directory(DIRS["error"], DIRS["backup"], 1):
             signal = 1
-        if process_directory(DIRS["backup"], DIRS["hadoop"], 2):
+        if process_directory(DIRS["backup"], DIRS["hadoop"], 1):
             signal = 2
 
         signal_msg = f"[SEMAPHORE SIGNAL] {signal} = {STATUS[signal]}"
